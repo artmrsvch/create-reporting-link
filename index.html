@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reported-Link</title>
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <form id="form">
+      <h1 class="title">Создать отчетную ссылку</h1>
+      <h3>Не забудьте активировать сессию (зайти в акк в контенте)</h3>
+      <textarea required placeholder="Введите СКЮ в столбик" name="area" id="area"></textarea>
+      <select name="select" id="select">
+        <option value="yes">Добавлено</option>
+        <option value="yes">Не добавлено</option>
+      </select>
+      <textarea name="reason" id="reason" placeholder="Причина отключения товаров"></textarea>
+      <button id="submit-btn" type="submit">Создать</button>
+    </form>
+    <div class="prevue">
+      <h1 class="title">Посмотреть скю и ссылку</h1>
+      <div class="wrapper">
+        <p class="sku"></p>
+        <p class="links"></p>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
