@@ -3,6 +3,24 @@ const checkIds = document.querySelector('.sku')
 const area = document.querySelector('#area')
 const checkLink = document.querySelector('.links')
 
+//kek
+const formCategory = document.querySelector('#formCategory')
+const areaCategory = document.querySelector('#areaCategory')
+const areaAllCategory = document.querySelector('#areaAllCategory')
+const inputArea = document.querySelector('#input-area')
+
+
+formCategory.addEventListener('submit', (e) => {
+  e.preventDefault()
+
+  const valueUsersCateg = e.srcElement[0].value
+  const valueAllCateg = e.srcElement[1].value
+
+  const difference = getNotRatedCategory(valueAllCateg, valueUsersCateg)
+  const withoutUndefinedDiff = difference.filter(el => el)
+  console.log(withoutUndefinedDiff)
+  inputArea.value = withoutUndefinedDiff.join('\n')
+})
 
 form.addEventListener('submit', (e) => {
   e.preventDefault()
@@ -32,4 +50,30 @@ const createLink = (skuArray) => {
   const formatedSku = skuArray.map(sku => `&sel_job%5B%5D=${sku}`).join('')
 
   return baseUrl(formatedSku)
+}
+const getNotRatedCategory = (ratedText, notRatedText) => {
+  const allNotRatedCategorys = Array.from(new Set(notRatedText.split('\n')))
+
+  const currentCategorysObj = (text) => {
+    const array = text.split('\n')
+    const buffer = new Object
+
+    array.forEach(element => {
+      if (element) {
+        buffer[element] = element
+      }
+    });
+
+    return buffer
+  }
+  const reducedBufferObject = currentCategorysObj(ratedText)
+
+  const difference = allNotRatedCategorys.map(category => {
+    if (!category) return
+    const isNotEmpty = reducedBufferObject[category]
+
+    if (!isNotEmpty) return category
+  })
+
+  return difference
 }

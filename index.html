@@ -22,7 +22,20 @@
       <h1 class="title">Посмотреть скю и ссылку</h1>
       <div class="wrapper">
         <p class="sku"></p>
-        <p class="links"></p>
+        <form id="formCategory">
+          <textarea
+            placeholder="Введите Категория|Набор атрибутов в столбик юзеров"
+            name="areaCategory"
+            id="areaCategory"
+          ></textarea>
+          <textarea
+            placeholder="Введите Категория|Набор атрибутов в столбик оцененные"
+            name="areaAllCategory"
+            id="areaAllCategory"
+          ></textarea>
+          <button id="submit-btn-category" type="submit">Найти разницу категорий</button>
+        </form>
+        <textarea id="input-area"></textarea>
       </div>
     </div>
     <script src="./index.js"></script>
